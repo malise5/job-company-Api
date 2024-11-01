@@ -60,18 +60,15 @@ public class ReviewController {
 
     }
 
-    // @PutMapping("/reviews/{reviewId}")
-    // public ResponseEntity<String> updateReview(@PathVariable Long id, @RequestBody Review review) {
-    //     Boolean existingReview = reviewImp.updateReview(id, review);
+    @PutMapping("/reviews/{reviewId}")
+    public ResponseEntity<String> updateReview(@PathVariable Long companyId, @PathVariable Long reviewId, @RequestBody Review review) {
+        Boolean existingReview = reviewImp.updateReview(companyId, reviewId, review);
+        if (existingReview) {
+            return ResponseEntity.status(HttpStatus.OK).body("Review updated successfully");
+        }
 
-    //     if (existingReview) {
-
-    //         return ResponseEntity.status(HttpStatus.OK).body("Review updated successfully");
-
-    //     }
-
-    //     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Review not found");
-    // }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Review not found");
+    }
 
 
 

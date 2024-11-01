@@ -56,19 +56,17 @@ public class ReviewImp implements ReviewService {
     }
 
     @Override
-    public Boolean updateReview(Long id, Review review) {
-        Optional<Review> rv = reviewRepository.findById(id);
-
-        if (rv.isPresent()) {
-            Review updatedReview = rv.get();
-            updatedReview.setTitle(review.getTitle());
-            updatedReview.setDescription(review.getDescription());
-            updatedReview.setRating(review.getRating());
-            reviewRepository.save(updatedReview);
+    public Boolean updateReview(Long companyId, Long reviewId , Review review) {
+        Optional<Company> comp= companyRepository.findById(companyId);
+        if (comp.isPresent()) {
+            review.setCompany(comp.get());
+            review.setId(reviewId);
+            reviewRepository.save(review);
 
             return true;
         }
         return false;
+
     }
 
     @Override
