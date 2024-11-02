@@ -1,10 +1,10 @@
-Here’s a detailed, professional README template for your Job Company API repository:
+Here’s the full README for your Job Company API, including the additional endpoint for reviews:
 
 ---
 
 # Job Company API
 
-A robust RESTful API designed to manage job listings, companies, and applications. Built with Java and Spring Boot, this API provides a structured approach to job posting, company data management, and application tracking.
+A robust RESTful API designed to manage job listings, companies, applications, and reviews. Built with Java and Spring Boot, this API provides a structured approach to job posting, company data management, and application tracking.
 
 ## Table of Contents
 
@@ -20,11 +20,11 @@ A robust RESTful API designed to manage job listings, companies, and application
 
 ## Overview
 
-The Job Company API allows users to create, retrieve, update, and delete data related to job postings and companies, as well as track applications. This API is ideal for integration with front-end applications or for use as a standalone back-end in job management systems.
+The Job Company API allows users to create, retrieve, update, and delete data related to job postings, companies, applications, and reviews. This API is ideal for integration with front-end applications or for use as a standalone back-end in job management systems.
 
 ## Features
 
-- **CRUD Operations**: Full create, read, update, and delete support for jobs, companies, and applications.
+- **CRUD Operations**: Full create, read, update, and delete support for jobs, companies, applications, and reviews.
 - **User Authentication**: Secure authentication for user sessions.
 - **Pagination & Filtering**: Efficient data access with paginated responses and filters.
 - **Error Handling**: Clear, structured responses for errors.
@@ -59,19 +59,22 @@ Ensure you have the following installed:
    mvn install
    ```
 
-3. Configure database settings in `src/main/resources/application.properties`:
+3. Build the Docker image:
+   ```bash
+   ./mvnw spring-boot:build-image -D"spring-boot.build-image.imageName=malise/jobappimage"
+   ```
+
+4. Configure database settings in `src/main/resources/application.properties`:
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/job_company_db
    spring.datasource.username=your_db_username
    spring.datasource.password=your_db_password
    ```
 
-4. Run the application:
+5. Run the application:
    ```bash
    mvn spring-boot:run
    ```
-
-5. The API should now be accessible at `http://localhost:8080`.
 
 ## Configuration
 
@@ -95,7 +98,10 @@ Once the server is running, API documentation is available at:
 | DELETE | `/api/jobs/{id}`            | Delete a job                  |
 | GET    | `/api/companies`            | Retrieve all companies        |
 | POST   | `/api/companies`            | Register a new company        |
-| POST   | `/api/reviews`              | Register a new review         |
+| GET    | `/api/reviews`              | Retrieve all reviews          |
+| POST   | `/api/reviews`              | Submit a new review           |
+| PUT    | `/api/reviews/{id}`         | Update a review               |
+| DELETE | `/api/reviews/{id}`         | Delete a review               |
 
 Refer to the Swagger UI for the full list and detailed documentation of each endpoint.
 
@@ -121,4 +127,6 @@ We welcome contributions! To contribute:
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
---- 
+---
+
+Feel free to modify any part of the README as needed, and let me know if you need further adjustments or additions!
