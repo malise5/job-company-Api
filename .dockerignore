@@ -1,0 +1,32 @@
+# Ignore Maven and Gradle build directories
+target/
+build/
+
+# Ignore compiled Java classes and dependencies
+*.class
+*.jar
+*.war
+
+# Ignore local environment and config files
+.env
+*.log
+
+# Ignore IDE and editor configurations
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Docker-related files (optional)
+Dockerfile
+.dockerignore
