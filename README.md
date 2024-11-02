@@ -122,5 +122,3 @@ We welcome contributions! To contribute:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 --- 
-
-This README should give users a solid understanding of the API’s purpose, setup instructions, and main features. Let me know if there’s more specific information you’d like to add!
