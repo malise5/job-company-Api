@@ -78,11 +78,8 @@ public class ReviewImp implements ReviewService {
 
     @Override
     public boolean deleteReview(Long companyId, Long reviewId) {
-        Optional<Company> comp = companyRepository.findById(companyId);
-        Optional<Review> rv = reviewRepository.findById(reviewId);
-
-        if (comp.isPresent() && rv.isPresent()) {
-            Review review = reviewRepository.findById(reviewId).get();
+        if (companyRepository.findById(companyId) !=null && reviewRepository.existsById(reviewId)) {
+            Review review = reviewRepository.findById(reviewId).orElse(null);
             Company company = review.getCompany();
             company.getReviews().remove(review);
             companyRepository.save(company);

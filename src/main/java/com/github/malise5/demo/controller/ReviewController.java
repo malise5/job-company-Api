@@ -72,14 +72,16 @@ public class ReviewController {
 
 
 
-    @DeleteMapping("/reviews{reviewId}")
-    public ResponseEntity<String> deleteReview(@PathVariable Long companyId, @PathVariable Long reviewId) {
+   
+        @DeleteMapping("/reviews/{reviewId}")
+        public ResponseEntity<String> deleteReview(@PathVariable Long companyId, @PathVariable Long reviewId) {
+            boolean isReviewDeleted =reviewImp.deleteReview(companyId, reviewId);
 
-        Boolean existingReview = reviewImp.deleteReview(companyId, reviewId);
-        if (existingReview) {
-            return ResponseEntity.status(HttpStatus.OK).body("Review deleted successfully");
+            if (isReviewDeleted) {
+                return ResponseEntity.status(HttpStatus.OK).body("Review deleted successfully");
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Review not found");
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Review not found");
-    }
+    
 
 }
