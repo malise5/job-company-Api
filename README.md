@@ -95,6 +95,7 @@ Once the server is running, API documentation is available at:
 | DELETE | `/api/jobs/{id}`            | Delete a job                  |
 | GET    | `/api/companies`            | Retrieve all companies        |
 | POST   | `/api/companies`            | Register a new company        |
+| POST   | `/api/reviews`              | Register a new review         |
 
 Refer to the Swagger UI for the full list and detailed documentation of each endpoint.
 
