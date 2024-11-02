@@ -70,22 +70,27 @@ public class ReviewImp implements ReviewService {
     }
 
     @Override
-    public Boolean deleteReview(Long id) {
-        Optional<Review> rv = reviewRepository.findById(id);
-        if (rv.isPresent()) {
-            reviewRepository.deleteById(id);
-            return true;
-        }
-
-        return false;
-
-    }
-
-    @Override
     public List<Review> getAllReviewsByCompanyId(Long companyId) {
         List<Review> reviewList = reviewRepository.findByCompanyId(companyId);
         return reviewList;
 
+    }
+
+    @Override
+    public boolean deleteReview(Long companyId, Long reviewId) {
+        Optional<Company> comp = companyRepository.findById(companyId);
+        Optional<Review> rv = reviewRepository.findById(reviewId);
+
+        if (comp.isPresent() && rv.isPresent()) {
+            Review review = reviewRepository.findById(reviewId).get();
+            Company company = review.getCompany();
+            company.getReviews().remove(review);
+            companyRepository.save(company);
+            reviewRepository.deleteById(reviewId);
+
+            return true;
+        }
+        return false;
     }
 
 }
